@@ -74,25 +74,26 @@ nav{position:fixed;top:18px;left:0;right:0;z-index:100;pointer-events:none}
 .brand img{height:28px;width:auto;filter:brightness(0) invert(1)}
 .brand span{font-size:.8rem;font-weight:600;color:var(--accent);border:1px solid rgba(14,165,200,.4);border-radius:999px;padding:2px 12px;white-space:nowrap}
 .nav-links{display:flex;gap:26px;font-size:.9rem;font-weight:500}
-.nav-links a{color:var(--ink-soft);text-decoration:none;transition:color .2s ease}
+.nav-links a{color:var(--ink-soft);text-decoration:none;transition:color .2s ease;white-space:nowrap}
 @media(hover:hover){.nav-links a:hover{color:var(--ink)}}
 nav .btn{padding:10px 20px;font-size:.9rem;box-shadow:none}
 @media(max-width:900px){
-  .nav-links{gap:16px;font-size:.86rem}
-  .nav-links a:nth-child(1),.nav-links a:nth-child(2){display:none}
+  .nav-links{gap:18px;font-size:.86rem}
+  .nav-links a:nth-child(2),.nav-links a:nth-child(3){display:none}
 }
 @media(max-width:560px){
   nav .btn{padding:9px 13px;font-size:.78rem}
-  .brand span{display:none}.brand img{height:22px}.nav-pill{padding-left:14px}
-  .nav-links{gap:12px;font-size:.82rem}
-  .nav-links a:nth-child(3){display:none}
+  .brand span{display:none}.brand img{height:22px}
+  .nav-pill{padding-left:14px;flex-wrap:wrap;border-radius:22px}
+  .nav-links{order:3;width:100%;justify-content:center;gap:26px;font-size:.85rem;margin-top:9px;padding-top:9px;border-top:1px solid var(--line)}
 }
 .cta-short{display:none}
 @media(max-width:600px){.cta-long{display:none}.cta-short{display:inline}}
 @media(max-width:640px){
   section{padding:64px 0}
   .hero{padding:100px 0 28px}
-  .hero .eyebrow{margin-bottom:20px}
+  .hero .eyebrow{margin-bottom:20px;font-size:.68rem;letter-spacing:.08em;padding:7px 14px}
+  .cta-row .btn{font-size:.94rem;padding:13px 22px}
   .hero .sub{margin:18px auto 26px}
   .hero-floor{margin-top:36px;flex-direction:column;align-items:center;gap:9px;text-align:center}
   .closing{padding:110px 0}
@@ -343,7 +344,7 @@ footer a{color:var(--ink-faint)}
     <h1 data-reveal>Eine sichere KI.<em>Für Ihr ganzes Kollegium.</em></h1>
     <p class="sub" data-reveal>Über 130 geprüfte Werkzeuge nehmen Ihren Lehrpersonen <b>Planung, Vorbereitung und Arbeitsblatt-Erstellung</b> ab. Stunden pro Woche kommen zurück, und Sie als Schulleitung behalten <b>Regeln, Datenschutz und Kosten</b> im Griff.</p>
     <div class="cta-row" data-reveal>
-      <a class="btn btn-primary" href="https://api.leadconnectorhq.com/widget/bookings/schullizenz" target="_blank" rel="noopener">Kostenloses Erstgespräch vereinbaren</a>
+      <a class="btn btn-primary" href="https://api.leadconnectorhq.com/widget/bookings/schullizenz" target="_blank" rel="noopener"><span class="cta-long">Kostenloses Erstgespräch vereinbaren</span><span class="cta-short">Kostenloses Erstgespräch</span></a>
       <a class="btn btn-line" href="#nutzen">Was Ihre Schule bekommt</a>
     </div>
   </div>
@@ -626,7 +627,7 @@ footer a{color:var(--ink-faint)}
   <div class="wrap" style="position:relative">
     <h2 data-reveal>Holen Sie die KI an Ihrer Schule <em>aus der Grauzone.</em></h2>
     <p data-reveal>15 Minuten Erstgespräch genügen. Wir begleiten pro Quartal eine begrenzte Zahl von Schulen persönlich beim Start.</p>
-    <div data-reveal><a class="btn btn-primary" href="https://api.leadconnectorhq.com/widget/bookings/schullizenz" target="_blank" rel="noopener">Kostenloses Erstgespräch vereinbaren</a></div>
+    <div data-reveal><a class="btn btn-primary" href="https://api.leadconnectorhq.com/widget/bookings/schullizenz" target="_blank" rel="noopener"><span class="cta-long">Kostenloses Erstgespräch vereinbaren</span><span class="cta-short">Kostenloses Erstgespräch</span></a></div>
     <div class="note" data-reveal>Kostenlos, unverbindlich und ohne Risiko.</div>
   </div>
 </section>
