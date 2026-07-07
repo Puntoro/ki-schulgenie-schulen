@@ -87,6 +87,8 @@ nav .btn{padding:10px 20px;font-size:.9rem;box-shadow:none}
   .nav-links{gap:12px;font-size:.82rem}
   .nav-links a:nth-child(3){display:none}
 }
+.cta-short{display:none}
+@media(max-width:600px){.cta-long{display:none}.cta-short{display:inline}}
 @media(max-width:640px){
   section{padding:64px 0}
   .hero{padding:100px 0 28px}
@@ -167,7 +169,20 @@ nav .btn{padding:10px 20px;font-size:.9rem;box-shadow:none}
 .quote .qm{font-family:"Playfair Display",serif;font-style:italic;font-size:2.6rem;color:var(--accent);line-height:1}
 .quote p{font-size:.98rem;color:var(--ink);margin:10px 0 18px}
 .quote .by{font-size:.85rem;color:var(--ink-faint)}
-@media(max-width:860px){.quotes{grid-template-columns:1fr}}
+.swipe-hint{display:none;font-size:.8rem;color:var(--ink-faint);margin-top:14px;text-align:center}
+@media(max-width:860px){
+  .quotes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;
+    margin-inline:-24px;padding-inline:24px;padding-bottom:10px;scrollbar-width:none}
+  .quotes::-webkit-scrollbar{display:none}
+  .quote{flex:0 0 82%;scroll-snap-align:center}
+  .swipe-hint{display:block}
+}
+@media(max-width:640px){
+  .kd-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;
+    margin-inline:-24px;padding-inline:24px;padding-bottom:10px;scrollbar-width:none}
+  .kd-grid::-webkit-scrollbar{display:none}
+  .kd{flex:0 0 78%;scroll-snap-align:center}
+}
 
 /* Ordner-Sektion (gross) */
 .ordner{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
@@ -313,7 +328,7 @@ footer a{color:var(--ink-faint)}
       <a href="#baukasten">Baukasten</a>
       <a href="#rechner">Preis</a>
     </div>
-    <a class="btn btn-primary" href="https://api.leadconnectorhq.com/widget/bookings/schullizenz" target="_blank" rel="noopener">Kostenloses Erstgespräch</a>
+    <a class="btn btn-primary" href="https://api.leadconnectorhq.com/widget/bookings/schullizenz" target="_blank" rel="noopener"><span class="cta-long">Kostenloses Erstgespräch</span><span class="cta-short">Gratis-Erstgespräch</span></a>
   </div>
 </nav>
 
@@ -400,6 +415,7 @@ footer a{color:var(--ink-faint)}
       <div class="kd" data-reveal><span class="emoji">🎬</span><p><b>Thema eingeben, kostenlose Videos finden lassen</b>, plus automatische Quizfragen und Antworten dazu.</p></div>
       <div class="kd" data-reveal><span class="emoji">📱</span><p><b>Arbeitsblätter digitalisieren</b> und als Link an die Klasse senden. Lösungen automatisch, die Kinder kontrollieren sich selbst.</p></div>
     </div>
+    <p class="swipe-hint">Zum Blättern wischen →</p>
   </div>
 </section>
 
@@ -594,6 +610,7 @@ footer a{color:var(--ink-faint)}
         <div class="by">Corinne S., Schulleiterin einer Primarschule, Kanton Basel-Landschaft</div>
       </div>
     </div>
+    <p class="swipe-hint">Zum Blättern wischen →</p>
   </div>
 </section>
 
