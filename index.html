@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI Schulgenie Schullizenz | Die KI-Plattform für Ihre ganze Schule</title>
+<meta name="description" content="Über 130 geprüfte KI-Werkzeuge für Ihr Kollegium: Planung, Vorbereitung und Arbeitsblatt-Erstellung in Minuten. Datenschutzkonform, mit Werkzeugen für die Schulleitung.">
+<meta property="og:title" content="KI Schulgenie Schullizenz für Primarschulen">
+<meta property="og:description" content="Eine sichere KI für Ihr ganzes Kollegium. Planung, Vorbereitung und Material in Minuten statt Stunden.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060F22;
+  --bg-raise:#0A1730;
+  --ink:rgba(255,255,255,.92);
+  --ink-soft:rgba(255,255,255,.62);
+  --ink-faint:rgba(255,255,255,.38);
+  --line:rgba(255,255,255,.07);
+  --accent:#0EA5C8;
+  --accent-soft:rgba(14,165,200,.14);
+  --r:18px;
+  --ease:cubic-bezier(.23,1,.32,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{
+  font-family:"Inter",system-ui,sans-serif;
+  background:var(--bg);color:var(--ink);
+  line-height:1.65;font-size:17px;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2{font-weight:700;letter-spacing:-.03em;line-height:1.05}
+h2{font-size:clamp(2rem,4.6vw,3.2rem)}
+em{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;letter-spacing:0}
+p{color:var(--ink-soft)}
+img{max-width:100%;display:block}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+section{padding:110px 0;position:relative}
+.kicker{font-size:.8rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:18px}
+
+/* Körnung über allem */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:inherit;font-size:1rem;font-weight:600;text-decoration:none;
+  padding:15px 30px;border-radius:999px;border:1px solid transparent;cursor:pointer;
+  transition:transform .16s var(--ease),background-color .2s ease,border-color .2s ease,box-shadow .2s ease;
+  white-space:nowrap;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--accent);color:#04101E;box-shadow:0 0 32px rgba(14,165,200,.35)}
+.btn-line{background:transparent;color:var(--ink);border-color:rgba(255,255,255,.18)}
+@media(hover:hover){
+  .btn-primary:hover{background:#2CBBDC;box-shadow:0 0 44px rgba(14,165,200,.5)}
+  .btn-line:hover{border-color:rgba(255,255,255,.45)}
+}
+
+/* Nav als Frosted-Pill */
+nav{position:fixed;top:18px;left:0;right:0;z-index:100;pointer-events:none}
+.nav-pill{
+  pointer-events:auto;max-width:1140px;margin:0 auto;width:calc(100% - 32px);
+  display:flex;align-items:center;justify-content:space-between;
+  background:rgba(8,18,40,.55);border:1px solid var(--line);border-radius:999px;
+  padding:10px 12px 10px 22px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{height:28px;width:auto;filter:brightness(0) invert(1)}
+.brand span{font-size:.8rem;font-weight:600;color:var(--accent);border:1px solid rgba(14,165,200,.4);border-radius:999px;padding:2px 12px;white-space:nowrap}
+.nav-links{display:flex;gap:26px;font-size:.9rem;font-weight:500}
+.nav-links a{color:var(--ink-soft);text-decoration:none;transition:color .2s ease}
+@media(hover:hover){.nav-links a:hover{color:var(--ink)}}
+nav .btn{padding:10px 20px;font-size:.9rem;box-shadow:none}
+@media(max-width:900px){
+  .nav-links{gap:16px;font-size:.86rem}
+  .nav-links a:nth-child(1),.nav-links a:nth-child(2){display:none}
+}
+@media(max-width:560px){
+  nav .btn{padding:9px 13px;font-size:.78rem}
+  .brand span{display:none}.brand img{height:22px}.nav-pill{padding-left:14px}
+  .nav-links{gap:12px;font-size:.82rem}
+  .nav-links a:nth-child(3){display:none}
+}
+@media(max-width:640px){
+  section{padding:64px 0}
+  .hero{padding:100px 0 28px}
+  .hero .eyebrow{margin-bottom:20px}
+  .hero .sub{margin:18px auto 26px}
+  .hero-floor{padding-top:40px;flex-direction:column;align-items:center;gap:9px;text-align:center}
+  .closing{padding:110px 0}
+  .kd-head{margin-top:48px;padding-top:44px}
+}
+
+/* Hero */
+.hero{
+  min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:140px 0 40px;overflow:hidden;
+}
+.orbs{position:absolute;inset:0;pointer-events:none;will-change:transform}
+.orb{position:absolute;border-radius:50%;filter:blur(10px)}
+.orb-1{width:640px;height:640px;left:-180px;top:-120px;background:radial-gradient(circle,rgba(14,165,200,.20),transparent 65%)}
+.orb-2{width:520px;height:520px;right:-140px;top:30%;background:radial-gradient(circle,rgba(217,119,87,.10),transparent 65%)}
+.orb-3{width:760px;height:760px;left:30%;bottom:-380px;background:radial-gradient(circle,rgba(14,165,200,.12),transparent 65%)}
+.hero-inner{position:relative;text-align:center;max-width:900px;margin:0 auto;padding:0 24px}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:10px;font-size:.82rem;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;
+  padding:8px 18px;margin-bottom:34px;background:rgba(255,255,255,.03);
+}
+.hero .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent)}
+.hero h1{font-size:clamp(2.9rem,7vw,5.4rem)}
+.hero h1 em{display:block;color:var(--accent);text-shadow:0 0 60px rgba(14,165,200,.45)}
+.hero .sub{font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:58ch;margin:28px auto 40px}
+.hero .sub b{color:var(--ink);font-weight:600}
+.cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-floor{
+  position:relative;margin-top:auto;padding-top:70px;
+  display:flex;justify-content:center;gap:14px 44px;flex-wrap:wrap;
+  font-size:.88rem;color:var(--ink-faint);
+}
+.hero-floor b{color:var(--ink-soft);font-weight:500}
+
+/* Nutzen: zwei Spalten */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.duo-col{padding:48px 48px 8px 0}
+.duo-col+.duo-col{border-left:1px solid var(--line);padding-left:48px;padding-right:0}
+.duo-col .who{font-size:1.35rem;font-weight:700;letter-spacing:-.02em;margin-bottom:6px}
+.duo-col .who em{color:var(--accent)}
+.duo-col>p{font-size:.95rem;margin-bottom:10px}
+.benefit{display:flex;gap:18px;padding:24px 0;border-top:1px solid var(--line)}
+.benefit:first-of-type{border-top:none;margin-top:14px}
+.benefit svg{flex:none;margin-top:4px;color:var(--accent)}
+.benefit h3{font-size:1.08rem;font-weight:600;margin-bottom:4px;letter-spacing:-.01em}
+.benefit p{font-size:.93rem}
+@media(max-width:860px){
+  .duo{grid-template-columns:1fr}
+  .duo-col{padding:40px 0 8px}
+  .duo-col+.duo-col{border-left:none;border-top:1px solid var(--line);padding-left:0}
+}
+
+/* Alles auf Knopfdruck (nach dem Vorbild kischulgenie.com) */
+.kd-head{margin-top:72px;border-top:1px solid var(--line);padding-top:56px;text-align:center}
+.kd-head .h{font-size:clamp(1.7rem,3.4vw,2.4rem);font-weight:700;letter-spacing:-.02em}
+.kd-head .s{color:var(--accent);font-weight:600;margin-top:8px;font-size:1.05rem}
+.kd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:36px}
+.kd{
+  border:1px solid var(--line);border-radius:14px;padding:24px 22px;
+  background:rgba(255,255,255,.02);
+  transition:transform .2s var(--ease),border-color .2s ease;
+}
+@media(hover:hover){.kd:hover{transform:translateY(-4px);border-color:rgba(14,165,200,.45)}}
+.kd .emoji{font-size:1.7rem;display:block;margin-bottom:12px}
+.kd p{font-size:.9rem}
+.kd p b{color:var(--ink)}
+@media(max-width:1020px){.kd-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.kd-grid{grid-template-columns:1fr}}
+
+/* Testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.quote{border:1px solid var(--line);border-radius:var(--r);padding:30px 28px;background:rgba(255,255,255,.02)}
+.quote .qm{font-family:"Playfair Display",serif;font-style:italic;font-size:2.6rem;color:var(--accent);line-height:1}
+.quote p{font-size:.98rem;color:var(--ink);margin:10px 0 18px}
+.quote .by{font-size:.85rem;color:var(--ink-faint)}
+@media(max-width:860px){.quotes{grid-template-columns:1fr}}
+
+/* Ordner-Sektion (gross) */
+.ordner{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+.ordner .big{font-size:clamp(2.2rem,5.4vw,3.6rem);font-weight:700;letter-spacing:-.03em;line-height:1.06;max-width:22ch}
+.ordner .big em{color:var(--accent);text-shadow:0 0 50px rgba(14,165,200,.35)}
+.ordner .intro{font-size:1.12rem;max-width:60ch;margin-top:22px}
+.ordner-duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
+.ordner-card{border:1px solid var(--line);border-radius:var(--r);padding:32px 30px;background:var(--bg-raise)}
+.ordner-card .who{font-weight:700;font-size:1.05rem;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.ordner-card .who svg{color:var(--accent)}
+.ordner-card p{font-size:.95rem}
+.tag-neu{display:inline-block;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#04101E;background:var(--accent);border-radius:999px;padding:4px 14px;margin-bottom:22px;box-shadow:0 0 24px rgba(14,165,200,.4)}
+@media(max-width:860px){.ordner-duo{grid-template-columns:1fr}}
+
+/* KI-Notizbuch */
+.nb-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;margin-top:48px}
+.chip-row{display:flex;flex-wrap:wrap;gap:10px}
+.src{border:1px solid var(--line);border-radius:999px;padding:7px 16px;font-size:.86rem;color:var(--ink-soft);background:rgba(255,255,255,.02);white-space:nowrap}
+.chat-card{background:var(--bg-raise);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:grid;gap:14px}
+.chat-card .lbl{font-size:.76rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+.msg{padding:14px 18px;border-radius:14px;font-size:.92rem;line-height:1.5}
+.msg.q{background:rgba(255,255,255,.07);justify-self:end;max-width:85%;color:var(--ink)}
+.msg.a{background:var(--accent-soft);border:1px solid rgba(14,165,200,.3);color:var(--ink-soft);max-width:95%}
+.src-badge{display:inline-block;font-size:.72rem;font-weight:600;color:var(--accent);border:1px solid rgba(14,165,200,.4);border-radius:6px;padding:1px 8px;margin-left:6px;white-space:nowrap}
+.make .src{border-color:rgba(14,165,200,.35);color:var(--accent)}
+.nb-points{display:grid;gap:18px;margin-top:28px}
+.nb-points .pt{border-left:2px solid var(--accent);padding-left:18px}
+.nb-points h3{font-size:1.02rem;font-weight:600;margin-bottom:3px}
+.nb-points p{font-size:.93rem}
+@media(max-width:860px){.nb-grid{grid-template-columns:1fr;gap:36px}}
+
+/* Baukasten Showcase */
+.show-head{max-width:680px}
+.shots{position:relative;margin-top:56px}
+.frame{
+  border-radius:14px;overflow:hidden;background:#0D1B36;
+  border:1px solid rgba(14,165,200,.5);
+  box-shadow:0 0 0 1px rgba(14,165,200,.15),0 0 80px rgba(14,165,200,.22),0 40px 80px -30px rgba(0,0,0,.7);
+}
+.frame-bar{display:flex;gap:6px;padding:12px 16px;background:rgba(255,255,255,.04);border-bottom:1px solid var(--line)}
+.frame-bar i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.16)}
+.frame img{width:100%;aspect-ratio:1512/953;object-fit:cover;object-position:top}
+.shot-tablet{
+  position:absolute;right:-8px;bottom:-64px;width:min(42%,420px);
+  border-radius:12px;overflow:hidden;border:1px solid var(--line);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.8);background:#0D1B36;
+}
+.shot-tablet img{width:100%;aspect-ratio:1512/939;object-fit:cover;object-position:top}
+.shot-tablet figcaption,.frame figcaption{font-size:.8rem;color:var(--ink-faint);padding:10px 16px;border-top:1px solid var(--line)}
+.show-points{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:120px}
+.show-points h3{font-size:1rem;font-weight:600;margin-bottom:6px}
+.show-points p{font-size:.92rem}
+.show-points .pt{border-top:1px solid var(--line);padding-top:20px}
+@media(max-width:860px){
+  .shot-tablet{position:static;width:100%;margin-top:18px}
+  .show-points{grid-template-columns:1fr;gap:22px;margin-top:56px}
+}
+
+/* Zahlen-Beweis */
+.numbers{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:72px 0}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.num-grid .n{font-size:clamp(2.6rem,5vw,4rem);font-weight:700;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.num-grid .n em{color:var(--accent)}
+.num-grid p{font-size:.9rem;margin-top:10px}
+@media(max-width:860px){.num-grid{grid-template-columns:1fr 1fr;gap:44px 20px}}
+
+/* So starten Sie (schlank) */
+.steps{border-top:1px solid var(--line);margin-top:24px}
+.step{display:grid;grid-template-columns:64px 1fr 2fr;gap:28px;align-items:baseline;padding:30px 0;border-bottom:1px solid var(--line)}
+.step .no{font-family:"Playfair Display",serif;font-style:italic;font-size:1.6rem;color:var(--accent)}
+.step h3{font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
+.step p{font-size:.95rem}
+@media(max-width:860px){.step{grid-template-columns:44px 1fr;gap:10px 18px}.step p{grid-column:2}}
+
+/* Rechner */
+.calc{
+  background:var(--bg-raise);border:1px solid var(--line);border-radius:24px;
+  padding:52px;max-width:900px;margin:56px auto 0;
+}
+.calc-top{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:12px}
+.calc-top label{font-weight:600;font-size:1.05rem}
+.count{font-variant-numeric:tabular-nums;font-size:1.9rem;font-weight:700;margin-left:14px}
+.seg{display:inline-flex;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:999px;padding:4px}
+.seg label{position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:inline-block;padding:9px 22px;border-radius:999px;font-size:.9rem;font-weight:600;color:var(--ink-soft);transition:all .2s ease}
+.seg input:checked+span{background:var(--accent);color:#04101E}
+.seg input:focus-visible+span{outline:2px solid var(--accent);outline-offset:2px}
+.tier-info{font-size:.88rem;color:var(--ink-soft);margin-bottom:28px;min-height:2.6em;max-width:70ch}
+.tier-info b{color:var(--ink)}
+input[type=range]{width:100%;accent-color:var(--accent);height:36px;cursor:pointer}
+.range-marks{display:flex;justify-content:space-between;font-size:.78rem;color:var(--ink-faint);margin-top:2px}
+.calc-out{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:16px;margin-top:34px}
+.ob{border:1px solid var(--line);border-radius:14px;padding:24px 26px}
+.ob .l{font-size:.8rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-faint)}
+.ob .v{font-size:2.1rem;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em;margin-top:6px}
+.ob-main{border-color:rgba(14,165,200,.5);background:var(--accent-soft);box-shadow:0 0 50px rgba(14,165,200,.15) inset}
+.ob-main .v{color:var(--accent);font-size:2.5rem;text-shadow:0 0 40px rgba(14,165,200,.4)}
+.calc-note{font-size:.85rem;color:var(--ink-faint);margin-top:26px;max-width:70ch}
+@media(max-width:760px){.calc{padding:32px 22px}.calc-out{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-wrap{max-width:780px;margin:0 auto}
+details{border-bottom:1px solid var(--line)}
+summary{
+  list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;
+  padding:26px 4px;font-weight:600;font-size:1.06rem;
+}
+summary::-webkit-details-marker{display:none}
+summary .x{flex:none;width:20px;height:20px;color:var(--accent);transition:transform .2s var(--ease)}
+details[open] summary .x{transform:rotate(45deg)}
+details p{padding:0 4px 26px;font-size:.96rem;max-width:64ch}
+
+/* Closing */
+.closing{padding:160px 0;text-align:center;overflow:hidden}
+.closing h2{font-size:clamp(2.4rem,5.6vw,4rem);max-width:20ch;margin:0 auto}
+.closing h2 em{color:var(--accent);text-shadow:0 0 60px rgba(14,165,200,.45)}
+.closing p{max-width:52ch;margin:24px auto 44px}
+.closing .note{font-size:.88rem;color:var(--ink-faint);margin-top:22px}
+
+footer{border-top:1px solid var(--line);padding:36px 0 48px;font-size:.86rem;color:var(--ink-faint)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer a{color:var(--ink-faint)}
+
+.motion-ok [data-reveal]{opacity:0}
+.static .hero{min-height:0;padding-top:190px}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .motion-ok [data-reveal]{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-pill">
+    <a class="brand" href="#top"><img src="assets/logo-ksg.png" alt="KI Schulgenie"><span>Für Schulen</span></a>
+    <div class="nav-links">
+      <a href="#nutzen">Für Ihre Schule</a>
+      <a href="#ordner">Neuheiten</a>
+      <a href="#baukasten">Baukasten</a>
+      <a href="#rechner">Preis</a>
+    </div>
+    <a class="btn btn-primary" href="https://api.leadconnectorhq.com/widget/bookings/schullizenz" target="_blank" rel="noopener">Kostenloses Erstgespräch</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="orbs" id="orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="hero-inner">
+    <span class="eyebrow" data-reveal><i></i>Die Schullizenz für Primarschulen</span>
+    <h1 data-reveal>Eine sichere KI.<em>Für Ihr ganzes Kollegium.</em></h1>
+    <p class="sub" data-reveal>Über 130 geprüfte Werkzeuge nehmen Ihren Lehrpersonen <b>Planung, Vorbereitung und Arbeitsblatt-Erstellung</b> ab. Stunden pro Woche kommen zurück, und Sie als Schulleitung behalten <b>Regeln, Datenschutz und Kosten</b> im Griff.</p>
+    <div class="cta-row" data-reveal>
+      <a class="btn btn-primary" href="https://api.leadconnectorhq.com/widget/bookings/schullizenz" target="_blank" rel="noopener">Kostenloses Erstgespräch vereinbaren</a>
+      <a class="btn btn-line" href="#nutzen">Was Ihre Schule bekommt</a>
+    </div>
+  </div>
+  <div class="wrap hero-floor" data-reveal>
+    <span>Im Einsatz an Primarschulen in <b>Zürich, Basel-Landschaft, Bern und Wallis</b></span>
+    <span><b>Datenschutzkonform</b>, keine Schülerkonten nötig</span>
+    <span><b>130+ Werkzeuge</b>, ein Login für alles</span>
+  </div>
+</header>
+
+<section id="nutzen">
+  <div class="wrap">
+    <span class="kicker" data-reveal>Eine Lizenz, alles drin</span>
+    <h2 data-reveal>Was Ihre Schule <em>konkret</em> bekommt.</h2>
+    <div class="duo" style="margin-top:48px">
+      <div class="duo-col" data-reveal>
+        <div class="who">Für Sie als <em>Schulleitung</em></div>
+        <p>Sie entscheiden nicht über ein Spielzeug. Sie entscheiden über Kontrolle, Entlastung und Aussenwirkung.</p>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+          <div><h3>KI im Griff statt Wildwuchs</h3><p>Heute nutzen Ihre Lehrpersonen KI privat, mit eigenen Konten, ohne Regeln. Mit der Schullizenz arbeiten alle auf einer geprüften, datenschutzkonformen Plattform, und Sie geben den Rahmen vor.</p></div>
+        </div>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
+          <div><h3>Ihre Schreibarbeit in Minuten statt Stunden</h3><p>Elternbriefe ans ganze Schulhaus, Konferenz-Protokolle, Jahresberichte, Ankündigungen: Sie geben Stichworte, die KI schreibt den fertigen Text. Sie prüfen und versenden.</p></div>
+        </div>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></svg>
+          <div><h3>Ihre Ablage ordnet sich selbst</h3><p>Protokolle, Konzepte, Berichte aus zehn Jahren Schulleitung: hochladen, und die KI sortiert alles nach Thema und Jahr, durchsuchbar in Sekunden. Mehr dazu weiter unten.</p></div>
+        </div>
+      </div>
+      <div class="duo-col" data-reveal>
+        <div class="who">Für Ihre <em>Lehrpersonen</em></div>
+        <p>Die Stunden, die abends und am Sonntag in die Schule fliessen, kommen zurück ins Leben.</p>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+          <div><h3>40 Minuten Vorbereitung werden 40 Sekunden</h3><p>Arbeitsblätter, Lesetexte, Prüfungen mit Erwartungshorizont: beschreiben, was die Klasse braucht, anpassen, fertig. Ohne KI-Vorkenntnisse.</p></div>
+        </div>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+          <div><h3>Die ganze Woche geplant, bevor der Kaffee kalt ist</h3><p>Wochenpläne, Stundenideen, Stationen: Die KI plant mit und liefert das Material gleich dazu, abgestimmt auf Klasse und Thema.</p></div>
+        </div>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+          <div><h3>Differenzierung, die sonst niemand schafft</h3><p>Jedes Blatt auf Knopfdruck in drei Fassungen, dazu einfache Sprache für DaZ-Kinder. Was sonst drei Abende kostet, macht die KI nebenbei.</p></div>
+        </div>
+        <div class="benefit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <div><h3>Die heikle Eltern-Mail? Steht in zwei Minuten.</h3><p>Vom Skilager-Brief bis zur Antwort an fordernde Eltern: Ton getroffen, professionell, ohne eine Stunde Formulieren.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="kd-head" data-reveal>
+      <div class="h">Alles auf Knopfdruck und in wenigen Sekunden.</div>
+      <div class="s">Für alle Fächer. Alle Schulstufen. Alle Altersstufen.</div>
+    </div>
+    <div class="kd-grid">
+      <div class="kd" data-reveal><span class="emoji">🎨</span><p><b>Wunderschöne Arbeitsblätter</b>: selbst kreativ bearbeiten oder die KI die Arbeit übernehmen lassen.</p></div>
+      <div class="kd" data-reveal><span class="emoji">✅</span><p><b>KI-gestützte Korrektur</b>: auch handschriftliche Texte hochladen und sofort Feedback erhalten.</p></div>
+      <div class="kd" data-reveal><span class="emoji">📅</span><p><b>Einzelne Unterrichtseinheiten</b> oder ganze Unterrichtsreihen und Semester vorplanen.</p></div>
+      <div class="kd" data-reveal><span class="emoji">💡</span><p><b>Kreative, unterhaltsame Unterrichtseinstiege</b>, die sofort frischen Wind in die Stunde bringen.</p></div>
+      <div class="kd" data-reveal><span class="emoji">📊</span><p><b>Weltklasse-Präsentationen</b> inklusive Bildern, besser als jede PowerPoint. Plus: übersichtliche Mind-Maps automatisch generieren lassen.</p></div>
+      <div class="kd" data-reveal><span class="emoji">🖼️</span><p><b>Bilder zaubern</b>: von Comics über Infografiken bis zu Visualisierungen. Der Vorstellungskraft sind keine Grenzen gesetzt.</p></div>
+      <div class="kd" data-reveal><span class="emoji">🎬</span><p><b>Thema eingeben, kostenlose Videos finden lassen</b>, plus automatische Quizfragen und Antworten dazu.</p></div>
+      <div class="kd" data-reveal><span class="emoji">📱</span><p><b>Arbeitsblätter digitalisieren</b> und als Link an die Klasse senden. Lösungen automatisch, die Kinder kontrollieren sich selbst.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ordner" id="ordner">
+  <div class="wrap">
+    <span class="tag-neu" data-reveal>Neu</span>
+    <div class="big" data-reveal>Jahre an gesammeltem Material. <em>Geordnet in Minuten.</em></div>
+    <p class="intro" data-reveal>Jede Schule sitzt auf einem Berg aus Ordnern, USB-Sticks und Ablagen, in dem niemand mehr etwas findet. KI Schulgenie räumt ihn auf: hochladen, und die KI sortiert alles automatisch, macht es durchsuchbar und zu neuem Material weiterverwendbar.</p>
+    <div class="ordner-duo">
+      <div class="ordner-card" data-reveal>
+        <div class="who"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Für Lehrpersonen</div>
+        <p>Hunderte Arbeitsblätter aus zehn Jahren Schulalltag werden nach <b style="color:var(--ink)">Fach, Klassenstufe und Thema</b> geordnet. „Ich hatte doch mal etwas zu Satzgliedern, Klasse 5" dauert ab jetzt Sekunden statt einen Sonntagabend. Und aus dem eigenen Bestand entstehen per Klick neue Prüfungen, Differenzierungen und frische Blätter.</p>
+      </div>
+      <div class="ordner-card" data-reveal>
+        <div class="who"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20"/><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3"/><path d="m7 21 5-5 5 5"/></svg>Für die Schulleitung</div>
+        <p>Protokolle, Konzepte, Jahresberichte, Elternpost aus Jahren Verwaltung: automatisch nach <b style="color:var(--ink)">Thema, Typ und Jahr</b> abgelegt und in Sekunden wiedergefunden. Die Schreib-Entlastung greift direkt auf Ihre eigenen Unterlagen zu, statt bei null anzufangen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="notizbuch">
+  <div class="wrap">
+    <span class="tag-neu" data-reveal>Neu</span>
+    <h2 data-reveal>Das KI-Notizbuch: <em>Chatten Sie mit Ihrem Wissen.</em></h2>
+    <div class="nb-grid">
+      <div data-reveal>
+        <p style="font-size:1.12rem">Dokumente, Bilder, YouTube-Videos, Webseiten, eigene Notizen: alles in ein Notizbuch laden. Die KI antwortet <b style="color:var(--ink)">aus Ihren eigenen Quellen, mit Quellenangabe</b>, nicht aus dem Internet. Und aus jeder Antwort wird auf Klick fertiges Material.</p>
+        <div class="nb-points">
+          <div class="pt"><h3>Für Lehrpersonen</h3><p>Erklärvideo und Fachtext hochladen, drei Fragen stellen, und daraus direkt das differenzierte Arbeitsblatt oder die Prüfung mit Erwartungshorizont erstellen. Ein Notizbuch pro Klasse oder Unterrichtsreihe.</p></div>
+          <div class="pt"><h3>Für die Schulleitung</h3><p>Konzepte, Berichte und Beschlüsse der letzten Jahre im Notizbuch: fragen statt suchen. Der neue Elternbrief oder das Konzept-Update entsteht aus den eigenen Unterlagen, nicht auf dem leeren Blatt.</p></div>
+        </div>
+      </div>
+      <div class="chat-card" data-reveal aria-hidden="true">
+        <div class="lbl">Ihre Quellen</div>
+        <div class="chip-row"><span class="src">PDF</span><span class="src">Word</span><span class="src">Bild</span><span class="src">YouTube-Video</span><span class="src">Webseite</span><span class="src">Notiz</span></div>
+        <div class="msg q">Was sind die drei wichtigsten Punkte aus dem Video und dem Text?</div>
+        <div class="msg a">Aus Ihren beiden Quellen sind das: die Wasserkreislauf-Stationen, die Rolle der Sonne und die Verdunstung im Alltag.<span class="src-badge">Quelle: Erklärvideo</span></div>
+        <div class="lbl">Daraus erstellen</div>
+        <div class="chip-row make"><span class="src">Arbeitsblatt</span><span class="src">Prüfung mit Erwartungshorizont</span><span class="src">Elternbrief</span><span class="src">Stundenplanung</span><span class="src">Lernkarten</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="baukasten">
+  <div class="wrap">
+    <div class="show-head">
+      <span class="kicker" data-reveal>Das Flaggschiff für die Primarstufe</span>
+      <h2 data-reveal>Der KI-Material-Baukasten. <em>Beschreiben genügt.</em></h2>
+      <p data-reveal style="margin-top:16px">Sagen Sie dem KI-Assistenten in einem Satz, was Sie brauchen, und er baut das ganze Arbeitsblatt: Aufgaben, Bilder, Lineaturen, fertig zum Drucken. Danach schleifen Sie mit über 300 Bausteinen fein, kein leeres Blatt, kein Startproblem.</p>
+    </div>
+    <div class="shots">
+      <figure class="frame" data-reveal>
+        <div class="frame-bar"><i></i><i></i><i></i></div>
+        <img src="assets/shot-17-blumen-blatt.png" alt="Der KI-Material-Baukasten: fertiges Mathe-Arbeitsblatt im Editor, links die Fächer und Bausteine, rechts Förderung und Differenzierung, oben die Länderwahl mit Schweizer Flagge">
+        <figcaption>Echte Ansicht aus dem Baukasten: KI-Assistent oben links, Länderwahl Schweiz, Schülerblatt und Lösungsblatt zum Drucken.</figcaption>
+      </figure>
+      <figure class="shot-tablet" data-reveal>
+        <img src="assets/shot-14-tabletversion.png" alt="Tabletversion: Kinder lösen die Übung direkt am Tablet, mit Vorlesen-Taste, Lesehilfe und sofortigem Richtig-Feedback">
+        <figcaption>Dasselbe Blatt läuft auch am Tablet: mit Vorlesen und sofortigem Feedback.</figcaption>
+      </figure>
+    </div>
+    <div class="show-points">
+      <div class="pt" data-reveal><h3>Die KI baut, Sie verfeinern</h3><p>Ganze Blätter auf Zuruf: Sachaufgaben, Lesetexte, Bilder und Hörtexte erzeugt die KI direkt im Blatt.</p></div>
+      <div class="pt" data-reveal><h3>Drucken mit Lösungsblatt</h3><p>Schülerblatt und Lösungsblatt auf Knopfdruck, dazu Förderversion in einfacher Sprache oder ein Thema in drei Fassungen.</p></div>
+      <div class="pt" data-reveal><h3>Die Klasse macht mit</h3><p>Am Tablet mit Sternen und Feedback oder gemeinsam an der Wandtafel, ganz ohne Schülerkonten.</p></div>
+      <div class="pt" data-reveal><h3>Gemacht für die Schweiz</h3><p>Basisschrift, Lineaturen und Notenskalen stimmen. Kein deutsches Material, das man erst umbauen muss.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="numbers">
+  <div class="wrap num-grid">
+    <div data-reveal><div class="n">65'000<em>+</em></div><p>Lehrpersonen vertrauen KI Schulgenie</p></div>
+    <div data-reveal><div class="n">Nr. <em>1</em></div><p>KI-Plattform für Lehrpersonen</p></div>
+    <div data-reveal><div class="n">130<em>+</em></div><p>Werkzeuge in einer Plattform</p></div>
+    <div data-reveal><div class="n">DSGVO</div><p>konform, mit Lehrplan-Bezug für DE, AT und CH</p></div>
+  </div>
+</div>
+
+<section id="programm">
+  <div class="wrap">
+    <span class="kicker" data-reveal>So starten Sie</span>
+    <h2 data-reveal>Von der Anfrage zur Schule mit KI. <em>In drei Schritten.</em></h2>
+    <div class="steps">
+      <div class="step" data-reveal>
+        <span class="no">01</span>
+        <h3>Erstgespräch</h3>
+        <p>15 Minuten mit unserem Schul-Team: Was braucht Ihre Schule, was kostet es, wie läuft der Start? Unverbindlich.</p>
+      </div>
+      <div class="step" data-reveal>
+        <span class="no">02</span>
+        <h3>Ihr Vorschlag</h3>
+        <p>Sie erhalten ein Angebot, das zu Ihrer Schule passt, auf Wunsch mit einer Weiterbildung, die das ganze Kollegium an Bord holt.</p>
+      </div>
+      <div class="step" data-reveal>
+        <span class="no">03</span>
+        <h3>Das Kollegium legt los</h3>
+        <p>Alle Lehrpersonen arbeiten mit einem Login, die Schulleitung behält den Überblick. Lehrpersonen lassen sich jederzeit ergänzen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rechner" style="padding-top:40px">
+  <div class="wrap">
+    <span class="kicker" data-reveal>Transparent kalkuliert</span>
+    <h2 data-reveal>Was kostet das für <em>Ihre</em> Schule?</h2>
+    <div class="calc" data-reveal>
+      <div class="calc-top">
+        <label for="teachers">Lehrpersonen<span class="count" id="countOut">15</span></label>
+        <div class="seg" role="radiogroup" aria-label="Paket wählen">
+          <label><input type="radio" name="tier" value="pro"><span>Pro</span></label>
+          <label><input type="radio" name="tier" value="ult" checked><span>Ultimate</span></label>
+        </div>
+      </div>
+      <p class="tier-info" id="tierInfo"></p>
+      <input type="range" id="teachers" min="5" max="100" step="1" value="15" aria-label="Anzahl Lehrpersonen">
+      <div class="range-marks"><span>5</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+      <div class="calc-out">
+        <div class="ob ob-main"><div class="l">Schullizenz pro Jahr</div><div class="v" id="totalOut">CHF 1'923</div></div>
+        <div class="ob"><div class="l">Pro Lehrperson / Jahr</div><div class="v" id="yearOut">CHF 128</div></div>
+        <div class="ob"><div class="l">Günstiger als Einzelabos</div><div class="v" id="saveOut">35 %</div></div>
+      </div>
+      <p class="calc-note">Preise in CHF, exakt nach unserer offiziellen Staffel. Alles Weitere, von der Rechnungsstellung bis zur Weiterbildung für Ihr Kollegium, besprechen wir im Erstgespräch.</p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="wrap">
+    <span class="kicker" data-reveal>Begleitung</span>
+    <h2 data-reveal>Sie sind damit <em>nicht allein.</em></h2>
+    <p data-reveal style="font-size:1.1rem;max-width:62ch;margin-top:16px">Wir führen Ihr Kollegium persönlich in die KI-Welt ein: mit einer praxisnahen Weiterbildung, bei der jede Lehrperson ihr erstes eigenes Material erstellt. Auch die Skeptischen kommen mit.</p>
+    <div class="ordner-duo" style="margin-top:40px">
+      <div class="ordner-card" data-reveal>
+        <div class="who"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>Online-Weiterbildung</div>
+        <p>Das ganze Kollegium wird live am Bildschirm geschult, ohne Anfahrt und einfach in den Schulalltag einzuplanen.</p>
+      </div>
+      <div class="ordner-card" data-reveal>
+        <div class="who"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>Weiterbildung bei Ihnen vor Ort</div>
+        <p>Wir kommen in Ihr Schulhaus und schulen das Kollegium direkt an den eigenen Geräten, greifbar und persönlich.</p>
+      </div>
+    </div>
+    <p data-reveal style="margin-top:26px;font-size:.95rem">Umfang, Termin und alles Weitere besprechen wir im kostenlosen Erstgespräch.</p>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="wrap faq-wrap">
+    <span class="kicker" data-reveal>Häufige Fragen</span>
+    <div style="margin-top:8px">
+      <details data-reveal>
+        <summary>Wie sieht es mit dem Datenschutz aus?<svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary>
+        <p>KI Schulgenie ist für den Schulalltag gebaut und datenschutzkonform gehostet. Schülerinnen und Schüler brauchen keine eigenen Konten: Die Lehrperson erstellt das Material, die Klasse arbeitet damit. Alle Unterlagen für Ihre Prüfung stellen wir im Erstgespräch zusammen.</p>
+      </details>
+      <details data-reveal>
+        <summary>Einige bei uns nutzen doch schon ChatGPT. Warum eine Schullizenz?<svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary>
+        <p>Genau das ist der Punkt: einzeln, privat, ohne Regeln. Mit der Schullizenz arbeiten alle auf einer geprüften Plattform mit Werkzeugen, die für die Schule gemacht sind. Und Sie geben als Schulleitung den Rahmen vor.</p>
+      </details>
+      <details data-reveal>
+        <summary>Unsere Lehrpersonen sind keine Technik-Menschen. Klappt das trotzdem?<svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary>
+        <p>Ja. Wunsch in einfachen Worten eingeben, fertig. Und wenn Sie möchten, holen wir Ihr Kollegium mit einer praxisnahen Weiterbildung ab, auch die Skeptischen. Das besprechen wir im Erstgespräch.</p>
+      </details>
+      <details data-reveal>
+        <summary>Wie läuft der Start konkret ab?<svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg></summary>
+        <p>Erstgespräch, Angebot, Start: mehr braucht es nicht. Im Gespräch klären wir Umfang, Preis und auf Wunsch eine Weiterbildung fürs Kollegium. Danach arbeitet Ihre ganze Schule mit einem Login, ohne Einzelabos und ohne Technik-Projekt.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:40px">
+  <div class="wrap">
+    <span class="kicker" data-reveal>Stimmen aus der Schweiz</span>
+    <h2 data-reveal>Was Schulleitungen <em>sagen.</em></h2>
+    <div class="quotes">
+      <div class="quote" data-reveal>
+        <div class="qm">&#8220;</div>
+        <p>Vorher hatte jede zweite Lehrperson irgendein eigenes KI-Konto. Jetzt arbeiten alle auf einer Plattform, und ich weiss, was an meiner Schule läuft.</p>
+        <div class="by">R. B., Schulleiter einer Primarschule, Kanton Zürich</div>
+      </div>
+      <div class="quote" data-reveal>
+        <div class="qm">&#8220;</div>
+        <p>Am meisten höre ich im Teamzimmer über die Arbeitsblätter: Was früher den halben Sonntag gekostet hat, ist jetzt in der Pause erledigt.</p>
+        <div class="by">M. S., Schulleiterin einer Primarschule, Kanton Basel-Landschaft</div>
+      </div>
+      <div class="quote" data-reveal>
+        <div class="qm">&#8220;</div>
+        <p>Entscheidend war für uns der Datenschutz: keine Schülerkonten, klare Regeln. So konnte ich das der Schulpflege guten Gewissens vorlegen.</p>
+        <div class="by">T. F., Schulleiter einer Primarschule, Kanton Wallis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="orbs" aria-hidden="true">
+    <div class="orb orb-1" style="left:auto;right:-200px;top:0"></div>
+    <div class="orb orb-3" style="left:-200px;bottom:-300px"></div>
+  </div>
+  <div class="wrap" style="position:relative">
+    <h2 data-reveal>Holen Sie die KI an Ihrer Schule <em>aus der Grauzone.</em></h2>
+    <p data-reveal>15 Minuten Erstgespräch genügen. Wir begleiten pro Quartal eine begrenzte Zahl von Schulen persönlich beim Start.</p>
+    <div data-reveal><a class="btn btn-primary" href="https://api.leadconnectorhq.com/widget/bookings/schullizenz" target="_blank" rel="noopener">Kostenloses Erstgespräch vereinbaren</a></div>
+    <div class="note" data-reveal>Kostenlos, unverbindlich und ohne Risiko.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Von einem Lehrer gegründet, damit Schule wieder Zeit fürs Wesentliche hat: die Kinder.</span>
+    <span><a href="https://kischulgenie.com" target="_blank" rel="noopener">kischulgenie.com</a> · <a href="https://kischulgenie.com" target="_blank" rel="noopener">Impressum und Datenschutz</a></span>
+  </div>
+</footer>
+
+<script>
+/* Rechner: Lookup exakt aus der offiziellen Preistabelle (Index 0 = 5 Lehrpersonen) */
+const PRICES={
+  pro:{single:145,total:[510,612,714,816,918,940,1034,1128,1222,1316,1410,1504,1598,1692,1786,1740,1827,1914,2001,2088,2175,2262,2349,2436,2523,2610,2697,2784,2871,2958,3045,3132,3219,3306,3393,3480,3567,3654,3741,3828,3915,4002,4089,4176,4263,4000,4080,4160,4240,4320,4400,4480,4560,4640,4720,4800,4880,4960,5040,5120,5200,5280,5360,5440,5520,5600,5680,5760,5840,5920,6000,6080,6160,6240,6320,6400,6480,6560,6640,6720,6800,6880,6960,7040,7120,7200,7280,7360,7440,7520,7600,7680,7760,7840,7920,7300]},
+  ult:{single:197,total:[691,830,968,1106,1244,1282,1411,1539,1667,1795,1923,2052,2180,2308,2436,2364,2482,2600,2719,2837,2955,3073,3191,3310,3428,3546,3664,3782,3901,4019,4137,4255,4373,4492,4610,4728,4846,4964,5083,5201,5319,5437,5555,5674,5792,5409,5517,5625,5733,5841,5949,6058,6166,6274,6382,6490,6598,6707,6815,6923,7031,7139,7247,7356,7464,7572,7680,7788,7896,8005,8113,8221,8329,8437,8546,8654,8762,8870,8978,9086,9195,9303,9411,9519,9627,9735,9844,9952,10060,10168,10276,10384,10493,10601,10709,9886]}
+};
+const TIER_INFO={
+  ult:"<b>Ultimate</b>: alle 130+ Werkzeuge, dazu der KI-Material-Baukasten, das KI-Notizbuch, die Werkzeuge für die Schulleitung und der Material-Ordner. Unsere Empfehlung für Schulen.",
+  pro:"<b>Pro</b>: alle 130+ Werkzeuge für Unterricht und Elternkommunikation. Details auf kischulgenie.com."
+};
+const chf=n=>"CHF "+String(n).replace(/\B(?=(\d{3})+(?!\d))/g,"'");
+const slider=document.getElementById("teachers");
+const update=()=>{
+  const n=+slider.value;
+  const tier=document.querySelector('input[name=tier]:checked').value;
+  const total=PRICES[tier].total[n-5];
+  document.getElementById("countOut").textContent=n;
+  document.getElementById("totalOut").textContent=chf(total);
+  document.getElementById("yearOut").textContent="CHF "+Math.round(total/n);
+  document.getElementById("saveOut").textContent=Math.round((1-total/(PRICES[tier].single*n))*100)+" %";
+  document.getElementById("tierInfo").innerHTML=TIER_INFO[tier];
+};
+slider.addEventListener("input",update);
+document.querySelectorAll('input[name=tier]').forEach(r=>r.addEventListener("change",update));
+update();
+
+/* Motion: Feder-Reveals (CDN, mit Fallback). Start erst, wenn der Tab sichtbar ist,
+   sonst bleiben Inhalte in Hintergrund-Tabs unsichtbar haengen. ?static=1 = Test-Modus ohne Animation. */
+(async function init(){
+  if(new URLSearchParams(location.search).has("static")){document.documentElement.classList.add("static");return}
+  if(document.visibilityState!=="visible"){
+    addEventListener("visibilitychange",init,{once:true});
+    return;
+  }
+  try{
+    if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const {animate,inView}=await import("https://cdn.jsdelivr.net/npm/motion@12/+esm");
+    document.documentElement.classList.add("motion-ok");
+    document.querySelectorAll("[data-reveal]").forEach(el=>{
+      inView(el,()=>{
+        const sib=[...el.parentElement.children].filter(c=>c.hasAttribute("data-reveal"));
+        const i=Math.max(0,sib.indexOf(el));
+        animate(el,{opacity:[0,1],transform:["translateY(30px)","translateY(0px)"]},
+          {type:"spring",stiffness:70,damping:17,delay:Math.min(i,5)*0.08});
+      },{margin:"0px 0px -90px 0px"});
+    });
+  }catch(e){/* Inhalte bleiben ohne Animation sichtbar */}
+})();
+
+/* Maus- und Scroll-Parallax auf die Glüh-Flächen in EINER Schleife (sonst überschreiben sie sich) */
+(()=>{
+  if(matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const orbs=document.getElementById("orbs");
+  if(!orbs) return;
+  const fine=matchMedia("(pointer:fine)").matches;
+  let tx=0,ty=0,x=0,y=0;
+  if(fine) addEventListener("mousemove",e=>{
+    tx=(e.clientX/innerWidth-.5)*36;
+    ty=(e.clientY/innerHeight-.5)*24;
+  },{passive:true});
+  (function tick(){
+    x+=(tx-x)*.06; y+=(ty-y)*.06;
+    const sy=Math.min(scrollY,innerHeight)*.18;
+    orbs.style.transform=`translate(${x}px,${y+sy}px)`;
+    requestAnimationFrame(tick);
+  })();
+})();
+</script>
+</body>
+</html>
